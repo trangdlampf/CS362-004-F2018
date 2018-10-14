@@ -648,7 +648,7 @@ void adventurerEffect(int card, int choice1, int choice2, int choice3, struct ga
   int currentPlayer = whoseTurn(state);
 
   int temphand[MAX_HAND];// moved above the if statement
-  int drawntreasure=0;
+  int drawntreasure=-1;
   int cardDrawn;
   int z = 0;// this is the counter for the temp hand
 
@@ -680,8 +680,8 @@ void smithyEffect(int card, int choice1, int choice2, int choice3, struct gameSt
   for (i = 0; i < 3; i++)
   {
     drawCard(currentPlayer, state);
+    drawCard(currentPlayer, state);
   }
-
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
 }
@@ -710,7 +710,7 @@ void council_roomEffect(int card, int choice1, int choice2, int choice3, struct 
 	}
 
   //put played card in played card pile
-  discardCard(handPos, currentPlayer, state, 0);
+  //discardCard(handPos, currentPlayer, state, 0);
 }
 
 void villageEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
@@ -721,7 +721,7 @@ void villageEffect(int card, int choice1, int choice2, int choice3, struct gameS
   drawCard(currentPlayer, state);
 
   //+2 Actions
-  state->numActions = state->numActions + 2;
+  state->numActions = state->numActions * 2;
 
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
