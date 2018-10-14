@@ -643,7 +643,7 @@ int getCost(int cardNumber)
   return -1;
 }
 
-int adventurerEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
+void adventurerEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int currentPlayer = whoseTurn(state);
 
@@ -670,10 +670,9 @@ int adventurerEffect(int card, int choice1, int choice2, int choice3, struct gam
 	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 	  z=z-1;
   }
-  return 0;
 }
 
-int smithyEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
+void smithyEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int i;
   int currentPlayer = whoseTurn(state);
@@ -685,10 +684,9 @@ int smithyEffect(int card, int choice1, int choice2, int choice3, struct gameSta
 
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
-  return 0;
 }
 
-int council_roomEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
+void council_roomEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int i;
   int currentPlayer = whoseTurn(state);
@@ -713,11 +711,9 @@ int council_roomEffect(int card, int choice1, int choice2, int choice3, struct g
 
   //put played card in played card pile
   discardCard(handPos, currentPlayer, state, 0);
-
-  return 0;
 }
 
-int villageEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
+void villageEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int currentPlayer = whoseTurn(state);
 
@@ -729,10 +725,9 @@ int villageEffect(int card, int choice1, int choice2, int choice3, struct gameSt
 
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
-  return 0;
 }
 
-int great_hallEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
+void great_hallEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int currentPlayer = whoseTurn(state);
 
@@ -744,7 +739,6 @@ int great_hallEffect(int card, int choice1, int choice2, int choice3, struct gam
 
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
-  return 0;
 }
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
