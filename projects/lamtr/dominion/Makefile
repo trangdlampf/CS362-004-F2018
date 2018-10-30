@@ -4,7 +4,7 @@ default: unittestresults.out
 
 
 
-unittestresults.out: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c dominion.c dominion.h dominion_helpers.h rngs.h
+unittestresults.out: unittest1.c unittest2.c unittest3.c unittest4.c dominion.c dominion.h dominion_helpers.h rngs.h
 	
 	echo "Result for running tests:" > unittestresults.out
 	echo "unittest1.c:" >> unittestresults.out
