@@ -9,47 +9,53 @@ dominion.o: dominion.h dominion.c rngs.o
 playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
 #To run playdom you need to entere: ./playdom <any integer number> like ./playdom 10*/
+testDrawCard: testDrawCard.c dominion.o rngs.o
+	gcc  -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
-# ================== ADDED THIS ==================
+badTestDrawCard: badTestDrawCard.c dominion.o rngs.o
+	gcc -o badTestDrawCard -g  badTestDrawCard.c dominion.o rngs.o $(CFLAGS)
 
-unitTest1: unittest1.c dominion.o rngs.o
-    gcc -o unitTest1 -g unittest1.c dominion.o rngs.o $(CFLAGS)
+testBuyCard: testDrawCard.c dominion.o rngs.o
+	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
-unitTest2: unittest2.c dominion.o rngs.o
-    gcc -o unitTest2 -g unittest2.c dominion.o rngs.o $(CFLAGS)
-    
-unitTest3: unittest3.c dominion.o rngs.o
-    gcc -o unitTest3 -g unittest3.c dominion.o rngs.o $(CFLAGS)    
-    
-unitTest4: unittest4.c dominion.o rngs.o
-    gcc -o unitTest4 -g unittest4.c dominion.o rngs.o $(CFLAGS)
-
-unitTestResults: unitTest1 unitTest2 unitTest3 unitTest4
-    ./unitTest1 &> unittestresult.out
-    gcov -b dominion.c >> unittestresult.out
-    cat dominion.c.gcov >> unittestresult.out
-
-    ./unitTest2 &> unittestresult.out
-    gcov -b dominion.c >> unittestresult.out
-    cat dominion.c.gcov >> unittestresult.out
-
-    ./unitTest3 &> unittestresult.out
-    gcov -b dominion.c >> unittestresult.out
-    cat dominion.c.gcov >> unittestresult.out
-	
-    ./unitTest4 &> unittestresult.out
-    gcov -b dominion.c >> unittestresult.out
-    cat dominion.c.gcov >> unittestresult.out
-    
-# ================== ADDED THIS ==================
+testAll: dominion.o testSuite.c
+	gcc -o testSuite testSuite.c -g  dominion.o rngs.o $(CFLAGS)
 
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-player: player.c interface.o
-	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
+runtests: testDrawCard 
+	./testDrawCard &> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
 
-all: playdom player 
+cardtestresults: cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.o rngs.o
+	echo "Results for Dominion Function Unit Test:" > cardtestresults.out
+	
+	echo  "cardtest1.c:" >> cardtestresults.out
+	gcc -o cardtest1 -g cardtest1.c dominion.o rngs.o $(CFLAGS)
+	./cardtest1 >> cardtestresults.out
+	gcov -b dominion.c >> cardtestresults.out
+	
+	echo "cardtest2.c:" >> cardtestresults.out
+	gcc -o cardtest2 -g cardtest2.c dominion.o rngs.o $(CFLAGS)
+	./cardtest2 >> cardtestresults.out
+	gcov -b dominion.c >> cardtestresults.out
+
+	echo "cardtest3.c:" >> cardtestresults.out
+	gcc -o cardtest3 -g cardtest3.c dominion.o rngs.o $(CFLAGS)
+	./cardtest3 >> cardtestresults.out
+	gcov -b dominion.c >> cardtestresults.out
+
+	echo "cardtest4.c:" >> cardtestresults.out
+	gcc -o cardtest4 -g cardtest4.c dominion.o rngs.o $(CFLAGS)
+	./cardtest4 >> cardtestresults.out
+	gcov -b dominion.c >> cardtestresults.out	
+	
+player: player.c interface.o
+	gcc -o player player.c -g dominion.o rngs.o interface.o $(CFLAGS)
+
+all: playdom player cardtestresults
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out 
+	rm -f *.o playdom.exe playdom player cardtestresults player.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
