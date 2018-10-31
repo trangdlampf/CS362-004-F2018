@@ -1,0 +1,12 @@
+Results for Dominion Function Unit Test:
+cardtest1.c:
+Card Test 1: Adventurer
+Expected: 7, Versus What We Get: 5
+File 'dominion.c'
+Lines executed:16.52% of 563
+Branches executed:16.79% of 417
+Taken at least once:13.19% of 417
+Calls executed:7.37% of 95
+Creating 'dominion.c.gcov'
+
+cardtest2.c:
