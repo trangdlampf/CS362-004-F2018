@@ -1,0 +1,44 @@
+Results for Dominion Function Unit Test:
+unittest1.c:
+Unit Test 1: Gold Coin 
+We should have 10 gold coins: 0
+Test Failed
+File 'dominion.c'
+Lines executed:0.89% of 563
+Branches executed:0.48% of 417
+Taken at least once:0.24% of 417
+Calls executed:0.00% of 95
+Creating 'dominion.c.gcov'
+
+unittest2.c:
+Unit Test 1: Silver Coin 
+We should have 10 silver coins: 0
+Test Failed
+File 'dominion.c'
+Lines executed:0.89% of 563
+Branches executed:0.48% of 417
+Taken at least once:0.24% of 417
+Calls executed:0.00% of 95
+Creating 'dominion.c.gcov'
+
+unittest3.c:
+Unit Test 1: Copper Coin 
+We should have 10 copper coins: 0
+Test Failed
+File 'dominion.c'
+Lines executed:0.89% of 563
+Branches executed:0.48% of 417
+Taken at least once:0.24% of 417
+Calls executed:0.00% of 95
+Creating 'dominion.c.gcov'
+
+unittest4.c:
+Unit Test 4: Is this Player's Turn Done? 
+Test Passed
+File 'dominion.c'
+Lines executed:17.05% of 563
+Branches executed:17.75% of 417
+Taken at least once:14.15% of 417
+Calls executed:7.37% of 95
+Creating 'dominion.c.gcov'
+
