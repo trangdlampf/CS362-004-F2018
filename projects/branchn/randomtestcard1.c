@@ -97,10 +97,7 @@ int checkSmithyEffect(int smithy, int choice1, int choice2, int choice3, struct 
 
 
 int main() {
-    int newCards = 0;
-    int discarded = 1;
-
-    int i, j, m, n, p;
+	int i, j, m, n, p;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int remove1, remove2;
     int seed = 1000;
