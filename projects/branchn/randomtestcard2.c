@@ -102,14 +102,10 @@ int checkGreatHallEffect(int great_hall, int choice1, int choice2, int choice3, 
 int main() {
     int newCards = 0;
     int discarded = 1;
-
     int i, j, m, n, p;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int remove1, remove2;
-    int seed = 1000;
-    int numPlayers = 2;
-    int thisPlayer = 0;
-	struct gameState G, testG, test2G;
+	struct gameState G;
 	int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
 			sea_hag, tribute, smithy, council_room};
 
