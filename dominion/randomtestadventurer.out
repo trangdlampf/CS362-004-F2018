@@ -20,10 +20,39 @@ Taken at least once:50.00% of 6
 No calls
 
 Function 'cardEffect'
-Lines executed:11.86% of 236
-Branches executed:18.59% of 199
-Taken at least once:7.54% of 199
-Calls executed:10.94% of 64
+Lines executed:6.93% of 202
+Branches executed:13.94% of 165
+Taken at least once:2.42% of 165
+Calls executed:7.27% of 55
+
+Function 'cardResult_Village'
+Lines executed:100.00% of 5
+No branches
+Calls executed:100.00% of 2
+
+Function 'cardResult_Mine'
+Lines executed:0.00% of 15
+Branches executed:0.00% of 14
+Taken at least once:0.00% of 14
+Calls executed:0.00% of 5
+
+Function 'cardResult_Council_Room'
+Lines executed:100.00% of 9
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+Calls executed:100.00% of 3
+
+Function 'cardResult_Smithy'
+Lines executed:0.00% of 5
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 2
+
+Function 'cardResult_Adventurer'
+Lines executed:60.00% of 15
+Branches executed:66.67% of 12
+Taken at least once:41.67% of 12
+Calls executed:50.00% of 2
 
 Function 'getCost'
 Lines executed:0.00% of 30
@@ -128,9 +157,8 @@ Taken at least once:75.00% of 4
 No calls
 
 File 'dominion.c'
-Lines executed:23.36% of 548
+Lines executed:24.33% of 563
 Branches executed:25.66% of 417
 Taken at least once:16.55% of 417
-Calls executed:15.56% of 90
+Calls executed:17.89% of 95
 Creating 'dominion.c.gcov'
-
