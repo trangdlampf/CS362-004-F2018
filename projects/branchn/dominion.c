@@ -646,9 +646,8 @@ int getCost(int cardNumber)
 void adventurerEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int currentPlayer = whoseTurn(state);
-
-  int temphand[MAX_HAND];// moved above the if statement
-  int drawntreasure=-1;
+  int temphand[MAX_HAND];
+  int drawntreasure=-1; // I had to change this back to 0 from -1, I was getting a SegFault otherwise. Just kidding still getting one.
   int cardDrawn;
   int z = 0;// this is the counter for the temp hand
 
@@ -662,6 +661,9 @@ void adventurerEffect(int card, int choice1, int choice2, int choice3, struct ga
       drawntreasure++;
     else{
       temphand[z]=cardDrawn;
+      // TODO: delete below printf
+      printf("temphand -> %p", temphand);
+      printf("state->handCount[currentPlayer] = %d\n", state->handCount[currentPlayer]);
       state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
       z++;
     }
