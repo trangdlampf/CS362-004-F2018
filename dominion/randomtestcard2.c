@@ -68,31 +68,3 @@ int main()
 	return 0;
 }
 
- 
-int cardResult_Council_Room(struct gameState *state, int handPos, int currentPlayer) {
-
-	int i; // CHANGE
-    //+4 Cards
-      for (i = 0; i < 2; i++) // CHANGE 4 to 2
-	{
-	  drawCard(currentPlayer, state);
-	}
-			
-      //+1 Buy
-      state->numBuys++;
-			
-    //Each other player draws a card
-    for (i = 0; i < state->numPlayers; i++)
-	{
-	  if ( i != currentPlayer )
-	    {
-	      drawCard(i, state);
-	    }
-	}
-			
-      //put played card in played card pile
-      discardCard(handPos, currentPlayer, state, 0);
-			
-      return 0;
-}
-
