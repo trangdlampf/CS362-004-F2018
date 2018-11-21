@@ -1,0 +1,106 @@
+Trang Lam - Assignment 5
+Github URL for new code for Assignment 5:
+https://github.com/trangdlampf/CS362-004-F2018/tree/lamtr-assignment-5/dominion
+(I had used Nicholas Branch's dominion.c from Assignment 2 and placed it into the above URL link. In addition to my unit tests and random tests.) 
+This is where Nicholas Branch's Github URL is located for Assignment 2:
+https://github.com/oraikus/CS362-004-F2018/blob/branchn-assignment-3/projects/branchn/dominion.c
+The complete .out files were be in the first URL, but I have included the pertinent statements at the end of this file (in purple text). The following .out files were generated:
+⦁	unittestcard1.out 		this was testing village
+⦁	unittestcard2.out 		this was testing council_room
+⦁	unittestadventurer.out 	this was testing adventurer
+⦁	randomtestcard1.out 		this was testing village, using randomly generated numbers
+⦁	randomtestcard2.out 		this was testing council_room, using randomly generated numbers
+⦁	randomtestadventurer.out 	this was testing adventurer, using randomly generated numbers
+
+BUG REPORTS
+The bugs Nicholgas introduced dominion.c are for the Kingdom cards: 
+⦁	adventurer, name of function: adventurerEffect()
+⦁	smithy, name of function: smithyEffect()
+⦁	council_room, name of function: council_roomEffect()
+⦁	great_hall, name of function: great_hallEffect()
+⦁	village, name of function: villageEffect()
+My unit tests and random tests will be focused on:
+⦁	adventurer, name of function: adventurerEffect()
+⦁	council_room, name of function: council_roomEffect()
+⦁	village, name of function: villageEffect()
+The results of the tests include bugs and/or information that tells me while I had better code coverage for each individual card (e.g. village, council_room, and adventurer), there was not testing done for the rest of the Kingdom cards (see below: purple text that shows part of the .out files). I can conclude that since there was not testing done for the other cards, then this BUT REPORT does not show that comprehensive testing was done on this application.
+Function 'cardEffect'
+Lines executed:5.74% of 209
+Branches executed:12.85% of 179
+Taken at least once:2.23% of 179
+Calls executed:6.90% of 58
+
+File 'dominion.c'
+Lines executed:24.51% of 567
+Branches executed:25.66% of 417
+Taken at least once:16.55% of 417
+Calls executed:19.00% of 100
+Creating 'dominion.c.gcov'
+Some questions asked at the Assignment 5 Handout that I was able to find out include:
+When refactoring my code: I did not have to change the method name or the parameters. For example, in previous assignments, I had called the function below with the following parameters to test village. I also used this same method and parameters for Assignment 5 when testing my team member's code.
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
+Assignment 3: was on unit_tests
+Assignment 4: was on random_tests
+After completing Assignment 3, I realized that there were better ways I could have written my unit_tests. As a result, even when this was not asked for in Assignment 4, I had decided to improve my code for unit_tests . And from this refactored unit_tests, I then wrote the random_tests for Assignment 4. As a result, I did not have to refactor a lot of code for Assignment 5. I only had to rename the file_names so that it would be easier to understand what I was testing.
+As a result, I believe that the refactored code is maintable.
+Bugs:
+Bug 1: Other bugs that I was able to find was by studying the code in dominion.c. For example, in the function below, case garden:  only returns a -1. It does not count the cards in a Player's Hand to see if they have 10 cards (or 20 or 30, etc.), which would result in bonus points.
+int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
+Bug 2: Because the method adventurerEffect only returned 66.67% on Lines Executed, Branches Executed, and Calls Executed (see below), I decided to look at this section of dominion.c. In the method adventurerEffect, the following code line was changed: int drawntreasure=-1;
+Function 'adventurerEffect'
+Lines executed:66.67% of 18
+Branches executed:66.67% of 12
+Taken at least once:41.67% of 12
+Calls executed:66.67% of 3
+
+DEBUGGING
+The bugs Nicholgas introduced dominion.c are for the Kingdom cards: 
+⦁	adventurer, name of function: adventurerEffect()
+Buggy Code: 	int drawntreasure=-1; // 0 was changed to -1
+⦁	smithy, name of function: smithyEffect()
+Buggy Code: There are 2 lines of: drawCard(currentPlayer, state);
+⦁	council_room, name of function: council_roomEffect()
+Buggy Code: I have not been able to find the bug.
+⦁	village, name of function: villageEffect()
+Buggy Code: It should be + not *	state->numActions = state->numActions * 2;
+The debugging section is based on my familiarty with the code and the game play based on Assignment 1 and 2.
+I had tested on flip and some of the warning (not necessarily bugs) that came up are included in the screenshot below.
+ 
+
+TEST REPORT
+GDB: From GDB, I realized that the includes were not written properly or that my settings in GDB were not pullling the includes properly.
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+All .out files are in the first URL, but I have copied the pertinent information below for ease of reading (below). I can conclude that I need more code coverage and testing done for cardEffect in dominion.c
+I also need to do other types of testing such as additional manual testing as if I was a Player playing the game.
+Function 'cardEffect'
+Lines executed:5.74% of 209
+Branches executed:12.85% of 179
+Taken at least once:2.23% of 179
+Calls executed:6.90% of 58
+
+Function 'villageEffect'
+Lines executed:100.00% of 6
+No branches
+Calls executed:100.00% of 3
+
+Function 'council_roomEffect'
+Lines executed:100.00% of 9
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+Calls executed:100.00% of 3
+
+Function 'adventurerEffect'
+Lines executed:66.67% of 18
+Branches executed:66.67% of 12
+Taken at least once:41.67% of 12
+Calls executed:66.67% of 3
+
+File 'dominion.c'
+Lines executed:24.51% of 567
+Branches executed:25.66% of 417
+Taken at least once:16.55% of 417
+Calls executed:19.00% of 100
+Creating 'dominion.c.gcov'
