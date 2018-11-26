@@ -1,4 +1,4 @@
-# Test Nicholas Branch's code for Assgigment 5
+// Test Nicholas Branch's code for Assgigment 5
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "rngs.h"
