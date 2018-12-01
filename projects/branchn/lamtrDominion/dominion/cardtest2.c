@@ -8,33 +8,29 @@
 
 #define TESTCARD "adventurer"
 
-// void adventurerEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
-// {
-//   int currentPlayer = whoseTurn(state);
-
-//   int temphand[MAX_HAND];// moved above the if statement
-//   int drawntreasure=-1;
-//   int cardDrawn;
-//   int z = 0;// this is the counter for the temp hand
-
-//   while(drawntreasure<2){
-//     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-//       shuffle(currentPlayer, state);
-//     }
-//     drawCard(currentPlayer, state);
-//     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-//     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-//       drawntreasure++;
-//     else{
-//       temphand[z]=cardDrawn;
-//       state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-//       z++;
-//     }
-//   }
-//   while(z-1>=0){
-// 	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-// 	  z=z-1;
-//   }
+// int cardResult_Adventurer(struct gameState *state, int handPos, int currentPlayer, int drawntreasure, int z, int cardDrawn) {
+	
+// 	int temphand[MAX_HAND]; // CHANGE
+	
+// 	  while(drawntreasure<2){
+// 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+// 	  shuffle(currentPlayer, state);
+// 	}
+// 	drawCard(currentPlayer, state);
+// 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+// 	if (cardDrawn == copper || cardDrawn == copper || cardDrawn == gold) // CHANGE silver to copper so there are 2 "copper"
+// 	  drawntreasure++;
+// 	else{
+// 	  temphand[z]=cardDrawn;
+// 	  state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+// 	  z++;
+// 	}
+//       }
+//       while(z-1>=0){
+// 	state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+// 	z=z-1;
+//       }
+//       return 0;	
 // }
 
 int main() {
@@ -61,7 +57,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	adventurerEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Adventurer(&testG, handpos, thisPlayer, 0, 0, 0);
 	printf("Hand Count After Draw = %d, Expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("Deck Count After Draw = %d, Expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards);
     printf("Action Count After Draw = %d, Expected = %d\n", testG.numActions, G.numActions);
@@ -75,7 +71,7 @@ int main() {
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
     memcpy(&test2G, &G, sizeof(struct gameState));
-	adventurerEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Adventurer(&testG, handpos, thisPlayer, 0, 0, 0);
     if (thisPlayer < (testG.numPlayers - 1)){
         testG.whoseTurn = thisPlayer + 1;//Still safe to increment
     }
@@ -99,7 +95,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	adventurerEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Adventurer(&testG, handpos, thisPlayer, 0, 0, 0);
 	printf("Supply Count Estate After Draw = %d, Expected = %d\n", supplyCount(estate, &testG), 8);
 	printf("Supply Count Duchy After Draw = %d, Expected = %d\n", supplyCount(duchy, &testG), 8);
     printf("Supply Count Province After Draw = %d, Expected = %d\n", supplyCount(province, &testG), 8);

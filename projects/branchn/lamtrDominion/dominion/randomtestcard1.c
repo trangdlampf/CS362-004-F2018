@@ -40,7 +40,7 @@ int checkSmithyEffect(int smithy, int choice1, int choice2, int choice3, struct 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
 	int thisPlayer = whoseTurn(&testG);
-	smithyEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Smithy(&testG, handpos, thisPlayer);
 	// printf("Hand Count After Draw = %d, Expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	// printf("Deck Count After Draw = %d, Expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards);
 	if (!(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded) && !(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards))
@@ -58,7 +58,7 @@ int checkSmithyEffect(int smithy, int choice1, int choice2, int choice3, struct 
 	memcpy(&testG, &G, sizeof(struct gameState));
 	memcpy(&test2G, &G, sizeof(struct gameState));
 	thisPlayer = whoseTurn(&G);
-	smithyEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Smithy(&testG, handpos, thisPlayer);
 	if (thisPlayer < (testG.numPlayers - 1)){
 		testG.whoseTurn = thisPlayer + 1;//Still safe to increment
 	}
@@ -83,7 +83,7 @@ int checkSmithyEffect(int smithy, int choice1, int choice2, int choice3, struct 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
 	thisPlayer = whoseTurn(&G);
-	smithyEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Smithy(&testG, handpos, thisPlayer);
 	// printf("Supply Count Estate After Draw = %d, Expected = %d\n", supplyCount(estate, &testG), 8);
 	// printf("Supply Count Duchy After Draw = %d, Expected = %d\n", supplyCount(duchy, &testG), 8);
 	// printf("Supply Count Province After Draw = %d, Expected = %d\n", supplyCount(province, &testG), 8);

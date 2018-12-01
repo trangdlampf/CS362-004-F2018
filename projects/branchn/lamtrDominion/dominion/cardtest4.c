@@ -42,15 +42,14 @@ int main() {
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
 
 	// ----------- TEST 1: +3 cards --------------
-	printf("TEST 1: +1 Card to Hand, +1 Action\n");
+	printf("TEST 1: +1 Card to Hand, +2 Action\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	villageEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
 	printf("Hand Count After Draw = %d, Expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("Deck Count After Draw = %d, Expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards);
     printf("Action Count After Draw = %d, Expected = %d\n", testG.numActions, G.numActions + 2);
-    printf("----- TEST FAILED ----- Number of Actions Doubled Not +2\n");
 	// assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
 	// assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards);
 
@@ -60,7 +59,7 @@ int main() {
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
     memcpy(&test2G, &G, sizeof(struct gameState));
-	villageEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
     if (thisPlayer < (testG.numPlayers - 1)){
         testG.whoseTurn = thisPlayer + 1;//Still safe to increment
     }
@@ -84,7 +83,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	villageEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
 	printf("Supply Count Estate After Draw = %d, Expected = %d\n", supplyCount(estate, &testG), 8);
 	printf("Supply Count Duchy After Draw = %d, Expected = %d\n", supplyCount(duchy, &testG), 8);
     printf("Supply Count Province After Draw = %d, Expected = %d\n", supplyCount(province, &testG), 8);

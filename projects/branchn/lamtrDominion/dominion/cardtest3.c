@@ -46,7 +46,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	great_hallEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus);
 	printf("Hand Count After Draw = %d, Expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("Deck Count After Draw = %d, Expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards);
     printf("Action Count After Draw = %d, Expected = %d\n", testG.numActions, G.numActions + 1);
@@ -59,7 +59,7 @@ int main() {
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
     memcpy(&test2G, &G, sizeof(struct gameState));
-	great_hallEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus);
     if (thisPlayer < (testG.numPlayers - 1)){
         testG.whoseTurn = thisPlayer + 1;//Still safe to increment
     }
@@ -83,7 +83,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	smithyEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus);
 	printf("Supply Count Estate After Draw = %d, Expected = %d\n", supplyCount(estate, &testG), 8);
 	printf("Supply Count Duchy After Draw = %d, Expected = %d\n", supplyCount(duchy, &testG), 8);
     printf("Supply Count Province After Draw = %d, Expected = %d\n", supplyCount(province, &testG), 8);

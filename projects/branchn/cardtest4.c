@@ -42,7 +42,7 @@ int main() {
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
 
 	// ----------- TEST 1: +3 cards --------------
-	printf("TEST 1: +1 Card to Hand, +1 Action\n");
+	printf("TEST 1: +1 Card to Hand, +2 Action\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
@@ -50,7 +50,7 @@ int main() {
 	printf("Hand Count After Draw = %d, Expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("Deck Count After Draw = %d, Expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards);
     printf("Action Count After Draw = %d, Expected = %d\n", testG.numActions, G.numActions + 2);
-    printf("----- TEST FAILED ----- Number of Actions Doubled Not +2\n");
+    // printf("----- TEST FAILED ----- Number of Actions Doubled Not +2\n");
 	// assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
 	// assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards);
 

@@ -8,18 +8,19 @@
 
 #define TESTCARD "smithy"
 
-// void smithyEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
-// {
-//   int i;
-//   int currentPlayer = whoseTurn(state);
-
-//   for (i = 0; i < 3; i++)
-//   {
-//     drawCard(currentPlayer, state);
-//     drawCard(currentPlayer, state);
-//   }
-//   //discard card from hand
-//   discardCard(handPos, currentPlayer, state, 0);
+// int cardResult_Smithy(struct gameState *state, int handPos, int currentPlayer) {
+	
+// 	int i; // CHANGE
+    
+// 	//+3 Cards
+//       for (i = 0; i < 2; i++) // CHANGE 3 to 2
+// 	{
+// 	  drawCard(currentPlayer, state);
+// 	}
+			
+//     //discard card from hand
+//       discardCard(handPos, currentPlayer, state, 0);
+//       return 0;
 // }
 
 int main() {
@@ -46,13 +47,13 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	smithyEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Smithy(&testG, handpos, thisPlayer);
 	newCards = 3;
 	printf("Hand Count After Draw = %d, Expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("Deck Count After Draw = %d, Expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards);
 	// assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
 	// assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards);
-    printf("----- TEST FAIL ---- 6 cards drawn when 3 expected.\n");
+    printf("----- TEST FAIL ---- \n");
 
 	// ----------- TEST 1: +3 cards --------------
 	printf("TEST 2: All Cards From Own Deck and No Change for Opponent\n");
@@ -60,7 +61,7 @@ int main() {
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
     memcpy(&test2G, &G, sizeof(struct gameState));
-	smithyEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Smithy(&testG, handpos, thisPlayer);
 	newCards = 3;
     if (thisPlayer < (testG.numPlayers - 1)){
         testG.whoseTurn = thisPlayer + 1;//Still safe to increment
@@ -85,7 +86,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	smithyEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardResult_Smithy(&testG, handpos, thisPlayer);
 	newCards = 3;
 	printf("Supply Count Estate After Draw = %d, Expected = %d\n", supplyCount(estate, &testG), 8);
 	printf("Supply Count Duchy After Draw = %d, Expected = %d\n", supplyCount(duchy, &testG), 8);
